@@ -1,50 +1,62 @@
+
+import { motion } from "framer-motion";
+
 const ProcessComparison = () => {
+  const fadeInVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: 0.1 * i }
+    })
+  };
+
   return (
     <section className="w-full max-w-[1320px] mt-[60px] mx-auto px-4">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
-        <div className="w-[36%] max-md:w-full">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-[36%] max-md:w-full"
+        >
           <div className="flex flex-col items-stretch mt-[26px]">
             <h2 className="text-[rgba(92,46,46,1)] text-2xl font-semibold leading-none">
               Today's Manual Processes
             </h2>
             <div className="flex w-full flex-col mt-[35px] pl-[13px]">
-              <div className="flex items-stretch gap-5">
-                <div className="bg-neutral-200 text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2.5 rounded-[10px] border-white border-solid border-2">
-                  01
-                </div>
-                <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
-                  Manually drawing flowchart shapes and
-                  <br />
-                  copying over information
-                </div>
-              </div>
-              <div className="self-stretch flex items-stretch gap-5 mt-7">
-                <div className="bg-neutral-200 text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2 rounded-[10px] border-white border-solid border-2">
-                  02
-                </div>
-                <div className="text-[#202124] text-lg font-normal leading-7 grow shrink w-[382px] basis-auto">
-                  Manually tracking and calculating complex
-                  <br />
-                  conveyances
-                </div>
-              </div>
-              <div className="flex items-stretch gap-5 mt-7">
-                <div className="bg-neutral-200 text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2 rounded-[10px] border-white border-solid border-2">
-                  03
-                </div>
-                <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
-                  Manually moving document details from
-                  <br />
-                  runsheets, to flowcharts, to conveyance
-                  <br />
-                  calculations, to reports
-                </div>
-              </div>
+              {[
+                "Manually drawing flowchart shapes and copying over information",
+                "Manually tracking and calculating complex conveyances",
+                "Manually moving document details from runsheets, to flowcharts, to conveyance calculations, to reports"
+              ].map((text, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={fadeInVariant}
+                  className="flex items-stretch gap-5 mt-7 first:mt-0"
+                >
+                  <div className="bg-neutral-200 text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2.5 rounded-[10px] border-white border-solid border-2 flex items-center justify-center">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
+                    {text}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </div>
-        <div className="w-[64%] ml-5 max-md:w-full max-md:ml-0">
-          <div className="bg-[rgba(255,227,227,1)] flex w-full flex-col mx-auto pl-8 pr-20 py-[29px] rounded-[5px_0px_0px_5px] max-md:px-5">
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="w-[64%] ml-5 max-md:w-full max-md:ml-0"
+        >
+          <div className="bg-[rgba(255,227,227,1)] flex w-full flex-col mx-auto pl-8 pr-20 py-[29px] rounded-[10px] shadow-sm max-md:px-5">
             <h2 className="text-[rgba(92,46,46,1)] text-2xl font-semibold leading-none">
               Our Solution
             </h2>
@@ -55,21 +67,26 @@ const ProcessComparison = () => {
                 "Instrument based mineral rights conveyance inputs and automated calculations are accessible from the flowchart shapes",
                 "Customizable and autopopulated first draft mineral ownership reports, drilling opinions, and division orders.",
               ].map((text, index) => (
-                <div
+                <motion.div
                   key={index}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={fadeInVariant}
                   className="flex items-stretch gap-5 flex-wrap mt-[22px] first:mt-0"
                 >
-                  <div className="bg-white text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2 rounded-[10px] border-[rgba(254,185,185,1)] border-solid border-2">
+                  <div className="bg-white text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 rounded-[10px] border-[rgba(254,185,185,1)] border-solid border-2 flex items-center justify-center">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
                     {text}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
