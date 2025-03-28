@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 const ProcessComparison = () => {
@@ -13,18 +12,20 @@ const ProcessComparison = () => {
 
   return (
     <section className="w-full max-w-[1320px] mt-[60px] mx-auto px-4">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+      <div className="flex gap-10 items-start max-md:flex-col max-md:items-stretch">
+        
+        {/* Left Section - Manual Process */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-[36%] max-md:w-full"
+          className="w-[40%] max-md:w-full"
         >
-          <div className="flex flex-col items-stretch mt-[26px]">
-            <h2 className="text-[rgba(92,46,46,1)] text-2xl font-semibold leading-none">
+          <div className="flex flex-col">
+            <h2 className="text-[#5C2E2E] text-2xl font-semibold text-left">
               Today's Manual Processes
             </h2>
-            <div className="flex w-full flex-col mt-[35px] pl-[13px]">
+            <div className="flex flex-col mt-6 space-y-6 pl-4">
               {[
                 "Manually drawing flowchart shapes and copying over information",
                 "Manually tracking and calculating complex conveyances",
@@ -37,12 +38,12 @@ const ProcessComparison = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   variants={fadeInVariant}
-                  className="flex items-stretch gap-5 mt-7 first:mt-0"
+                  className="flex items-center gap-4 text-left"
                 >
-                  <div className="bg-neutral-200 text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 px-2.5 rounded-[10px] border-white border-solid border-2 flex items-center justify-center">
+                  <div className="bg-neutral-200 text-xs font-medium w-8 h-8 rounded-lg flex items-center justify-start border-white border-2 pl-2">
                     {String(index + 1).padStart(2, "0")}
                   </div>
-                  <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
+                  <div className="text-[#202124] text-lg font-normal leading-7 text-left">
                     {text}
                   </div>
                 </motion.div>
@@ -50,17 +51,19 @@ const ProcessComparison = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Right Section - Our Solution */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-[64%] ml-5 max-md:w-full max-md:ml-0"
+          className="w-[60%] max-md:w-full"
         >
-          <div className="bg-[rgba(255,227,227,1)] flex w-full flex-col mx-auto pl-8 pr-20 py-[29px] rounded-[10px] shadow-sm max-md:px-5">
-            <h2 className="text-[rgba(92,46,46,1)] text-2xl font-semibold leading-none">
+          <div className="bg-[#FFE3E3] p-8 rounded-lg shadow-md">
+            <h2 className="text-[#5C2E2E] text-2xl font-semibold text-left">
               Our Solution
             </h2>
-            <div className="flex items-stretch gap-5 flex-wrap mt-[38px]">
+            <div className="flex flex-col gap-6 mt-6">
               {[
                 'Smart "file-to-runsheet" links that take you to the information you need – stop digging through folders and files',
                 'Smart "runsheet-to-flowchart" shape generation - Never draw a box or rewrite a date again',
@@ -74,12 +77,12 @@ const ProcessComparison = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   variants={fadeInVariant}
-                  className="flex items-stretch gap-5 flex-wrap mt-[22px] first:mt-0"
+                  className="flex items-center gap-4 text-left"
                 >
-                  <div className="bg-white text-xs text-[rgba(32,33,36,1)] font-medium whitespace-nowrap leading-none w-8 h-8 rounded-[10px] border-[rgba(254,185,185,1)] border-solid border-2 flex items-center justify-center">
+                  <div className="bg-white text-xs font-medium w-8 h-8 rounded-lg flex items-center justify-start border-[#FEB9B9] border-2 pl-2">
                     {String(index + 1).padStart(2, "0")}
                   </div>
-                  <div className="text-[#202124] text-lg font-normal leading-7 basis-auto grow shrink">
+                  <div className="text-[#202124] text-lg font-normal leading-7 text-left">
                     {text}
                   </div>
                 </motion.div>

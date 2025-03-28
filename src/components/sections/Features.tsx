@@ -1,4 +1,3 @@
-
 import CustomButton from "../ui/custom-button";
 import { motion } from "framer-motion";
 
@@ -6,54 +5,56 @@ const Features = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
-      opacity:
-      1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
-    <section className="self-center flex w-full max-w-[1200px] flex-col items-stretch mt-[110px] px-4">
-      <motion.div 
+    <section className="self-center flex w-full max-w-[1200px] flex-col items-start mt-[80px] px-4">
+      {/* Heading Section */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="flex gap-10 text-[rgba(32,33,36,1)] flex-wrap"
+        className="flex flex-wrap items-center gap-6 text-[rgba(32,33,36,1)] w-full"
       >
-        <div className="min-w-60 min-h-[72px] text-4xl font-medium text-center grow shrink w-[361px]">
-          <div className="bg-[rgba(254,185,185,1)] min-h-[72px] w-[451px] max-w-full px-[7px] py-3 rounded-[5px] shadow-sm flex items-center justify-center">
-            Features and Benefits
-          </div>
+        {/* Pink Background Box */}
+        <div className="bg-[rgba(254,185,185,1)] px-8 py-3 rounded-[5px] shadow-sm text-[36px] font-semibold text-[#000]">
+          Features and Benefits
         </div>
-        <div className="text-2xl font-normal grow shrink w-[588px] flex items-center">
+
+        {/* Supporting Text */}
+        <div className="text-[28px] font-normal text-left max-w-[700px]">
           Everything you need for faster, more accurate, mineral{" "}
-          <strong>title work:</strong>
+          <strong className="font-bold">title work:</strong>
         </div>
       </motion.div>
-      <motion.div 
+
+      {/* Full-Width Pink Box */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-[rgba(254,185,185,0.4)] flex flex-col text-[22px] text-[rgba(32,33,36,1)] font-light mt-[50px] px-[50px] py-[60px] rounded-[10px] shadow-sm"
+        className="bg-[rgba(254,185,185,0.4)] flex flex-col text-[22px] text-[rgba(32,33,36,1)] font-light mt-[40px] px-[50px] py-[50px] rounded-[10px] shadow-sm w-full"
       >
-        <motion.div
+        <motion.ul
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
+          className="list-disc pl-6 leading-[2]"
         >
           {[
             "Auto-generated interactive Runsheet – Sortable and Searchable.",
@@ -63,16 +64,18 @@ const Features = () => {
             "Linked supporting documents on every page – easy access and reference.",
             "Secure, cloud-based access - Work from anywhere.",
           ].map((feature, index) => (
-            <motion.div 
-              key={index} 
+            <motion.li
+              key={index}
               variants={itemVariants}
-              className="leading-[3] mt-9 first:mt-0 hover:text-[rgba(92,46,46,1)] transition-colors duration-300"
+              className="mt-5 hover:text-[rgba(92,46,46,1)] transition-colors duration-300 text-left"
             >
               {feature}
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
-        <CustomButton className="self-center w-[298px] mt-24 max-md:mt-10 hover:scale-105 transition-transform duration-300">
+        </motion.ul>
+
+        {/* Centered Dark Button */}
+        <CustomButton className="self-center mt-10 w-[298px] bg-[rgba(92,46,46,1)] text-white py-3 px-6 rounded-lg hover:scale-105 transition-transform duration-300">
           Join the Early Access Program
         </CustomButton>
       </motion.div>
@@ -81,3 +84,4 @@ const Features = () => {
 };
 
 export default Features;
+  
